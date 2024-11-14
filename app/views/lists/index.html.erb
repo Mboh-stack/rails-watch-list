@@ -1,9 +1,35 @@
-<h1>Liste des Listes</h1>
+<div class="container-fluid p-0">
+  <!-- Header avec l'image de fond -->
+  <div class="header bg-dark text-white text-center d-flex align-items-center justify-content-center" style="height: 60vh; background-image: url('/assets/movie_theater.jpg'); background-size: cover; background-position: center;">
+    <div class="text-center">
+      <h1>Save any kind of movies</h1>
+      <p class="lead">Classic</p>
+    </div>
+  </div>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+  <!-- Contenu principal -->
+  <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>My Lists</h2>
+      <%= link_to "Create a movie list", new_list_path, class: "btn btn-success" %>
+    </div>
 
-<%= link_to "Créer une nouvelle liste", new_list_path %>
+    <!-- Cartes pour les listes de films -->
+    <div class="row">
+      <% @lists.each do |list| %>
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <% if list.image_url.present? %>
+              <img src="<%= list.image_url %>" class="card-img-top" alt="<%= list.name %>">
+            <% else %>
+              <img src="/assets/default_list_image.jpg" class="card-img-top" alt="<%= list.name %>">
+            <% end %>
+            <div class="card-img-overlay d-flex align-items-center justify-content-center">
+              <h3 class="text-white text-center"><%= list.name %></h3>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
