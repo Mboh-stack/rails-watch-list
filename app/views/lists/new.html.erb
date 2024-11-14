@@ -1,5 +1,3 @@
-<h1>Créer une Nouvelle Liste</h1>
-
 <%= form_with model: @list, local: true do |form| %>
   <div>
     <%= form.label :name, "Nom de la Liste" %>
@@ -7,8 +5,11 @@
   </div>
 
   <div>
+    <%= form.label :image_url, "URL de l'Image" %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
     <%= form.submit "Créer la liste" %>
   </div>
 <% end %>
-
-<%= link_to "Retour à toutes les listes", lists_path %>

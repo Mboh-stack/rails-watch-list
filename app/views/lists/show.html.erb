@@ -3,3 +3,8 @@
 <p>Ici, tu pourrais afficher plus de détails sur cette liste.</p>
 
 <%= link_to "Retour à toutes les listes", lists_path %>
+
+<h1><%= @list.name %></h1>
+<% if @list.image_url.present? %>
+  <img src="<%= @list.image_url %>" alt="<%= @list.name %>" style="max-width: 100%; height: auto;">
+<% end %>
